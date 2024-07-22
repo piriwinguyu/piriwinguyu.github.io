@@ -22,22 +22,18 @@
         }
         .main-content {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* Cambio para móviles */
             align-items: center;
             flex-grow: 1;
             position: relative;
             z-index: 1;
         }
         .left-img, .right-img {
-            width: 500px;
-            height: 900px;
+            width: 100%;
+            max-width: 500px; /* Limita el ancho máximo en pantallas grandes */
+            height: auto; /* Mantiene la proporción de la imagen */
             border-radius: 30px;
-        }
-        .left-img {
-            align-self: flex-start;
-        }
-        .right-img {
-            align-self: flex-end;
+            margin: 10px;
         }
         .video-container {
             flex-grow: 1;
@@ -45,6 +41,21 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
+            width: 100%;
+            padding: 10px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 560px; /* Limita el ancho máximo del video */
+            height: auto; /* Mantiene la proporción del video */
+        }
+
+        /* Consultas de medios para pantallas pequeñas */
+        @media (min-width: 768px) {
+            .main-content {
+                flex-direction: row; /* Cambio para pantallas más grandes */
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
@@ -79,7 +90,7 @@
     <div class="main-content">
         <img src="7.png" class="left-img">
         <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/fsq5jz59AKQ?si=gwpIwyc371qxUmhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/fsq5jz59AKQ?si=gwpIwyc371qxUmhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <img src="8.png" class="right-img">
     </div>
